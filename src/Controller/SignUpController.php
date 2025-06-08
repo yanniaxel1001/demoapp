@@ -7,12 +7,12 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-class MainController extends AbstractController
+class SignUpController extends AbstractController
 {
-    #[Route('/', name:'inicio')]
-    public function index(): Response
+    #[Route('/registrar', name:'registrar')]
+    public function registrar(): Response
     {
-        return $this->render('inicio/index.html.twig');
+        return $this->render('');
     }
 }
 ?>
