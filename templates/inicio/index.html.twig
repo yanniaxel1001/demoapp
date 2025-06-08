@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} TiendaFES{% endblock %}
+{% block body %}
+<h1>Bienvenido</h1>
+<div>
+    <a href="{{ path('registrar')}}">Registrar</a>
+    <a href="{{ path('login')}}">Iniciar sesion</a>
+</div>
+{% endblock %}
