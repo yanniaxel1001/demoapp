@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block tittle %} Log in {% endblock %}
+
+{% block body %} 
+    {% if error %}
+        <div>{{error.messageKey|trans(error.messageData, 'security')}}</div>
+    {% endif %}
+
+    <form method="post">
+        <label for="username">Usuario: </label>
+        <input type="text" id="username" name="username" value="{{last_username}}">
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password">
+
+        <button type="submit">Iniciar Sesion</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'badse.html.twig' %}
+{% block tittle %}Dashboard {% endblock %}
+{% block body %}
+    <h1>Bienvenido{{username}}</h1>
+    <a href={{ path("inicio")}}</a>
+{% endblock %}
