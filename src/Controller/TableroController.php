@@ -13,9 +13,9 @@ class TableroController extends AbstractController
     #[Route('/dashboard', name:'productos')]
     public function inicio(): Response
     {
-        $this->$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $user = $thi->getUser();
+        $user = $this->getUser();
 
         return $this->render('dashboard/productos.html.twig',[
             'username' => $user-> getUsername()

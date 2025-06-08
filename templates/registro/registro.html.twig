@@ -5,11 +5,12 @@
 {% block body %}
     <h1>Registro</h1>
     {{ form_start(registroForm) }}
+        {{ form_row(registroForm.name) }}
+        {{ form_row(registroForm.lastname) }}
         {{ form_row(registroForm.username) }}
-        {#{{ form_row(registroForm.name) }}#}
+        {{ form_row(registroForm.email) }}
         {{ form_row(registroForm.plainPassword.first) }}
-        {{ form_row(registroForm.plainPassword.second) }}
-        {#{{ form_row(registroForm.email) }}#}
+        {{ form_row(registroForm.plainPassword.second) }}     
         <button type="submit" class="btn">Aceptar</button>
     {{ form_end(registroForm) }}
 {% endblock %}

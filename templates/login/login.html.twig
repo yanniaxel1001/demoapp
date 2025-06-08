@@ -8,11 +8,18 @@
     {% endif %}
 
     <form method="post">
-        <label for="username">Usuario: </label>
-        <input type="text" id="username" name="username" value="{{last_username}}">
-        <label for="password">Password: </label>
-        <input type="password" id="password" name="password">
-
-        <button type="submit">Iniciar Sesion</button>
+        <div>
+            <label for="username">Usuario: </label>
+            <input type="text" id="username" name="_username" value="{{last_username}}" required>
+        </div>
+            
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="_password" required>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <div>
+            <button type="submit">Iniciar Sesion</button>
+        </div>
     </form>
 {% endblock %}
