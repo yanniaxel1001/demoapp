@@ -14,34 +14,43 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class SignUpController extends AbstractController
 {
-    #[Route('/registrar', name:'registrar')]
+    #[Route('/registrar', name:'registrar', methods:['GET','POST'])]
     public function registrar(
         Request $request,
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager
-    ): Response
-    {
-        $user = new User();
-        $form =$this->createForm(RegistroFormType::class, $user);
-        $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()) { 
+    ): Response{
+        if ($request->isMethod('POST')) 
+        {
+            $password = $request->request->get('password');
+            $confirmPassword = $request->request->get('confirm_password');
+            if ($password !== $confirmPassword) 
+            {
+                return $this->redirectToRoute('registrar');
+            }
+            // Procesar el formulario manualmente
+            $user = new User();
+            $user->setUsername($request->request->get('username'));
+            $user->setEmail($request->request->get('email'));
+            $user->setName($request->request->get('nombre'));
+            $user->setLastname($request->request->get('apellido'));
+            
+            // Hashear la contraseña
             $user->setPassword(
                 $passwordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $request->request->get('password')
                 )
             );
-
+            
             $user->setRoles(['ROLE_USER']);
+            
             $entityManager->persist($user);
             $entityManager->flush();
-
+            
             return $this->redirectToRoute('login');
         }
-        return $this->render('registro/registro.html.twig',[
-            'registroForm' => $form->createView()
-        ]);
+        return $this->render('registro/registro.html.twig');
     }
 }
 ?>

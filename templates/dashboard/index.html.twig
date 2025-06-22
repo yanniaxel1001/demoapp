@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block tittle %}Dashboard {% endblock %}
+{% block body %}
+
+    <a href="{{ path('product_create') }}">Crear nuevo producto</a>
+    <ul>
+    {% for product in products %}
+        <li>
+            {#<a href="{{ path('product_edit')}}">Editar</a>#}
+            <strong>{{ product.name }}</strong> - ${{ product.price }}<br>
+            {{ product.description }}<br>
+        </li>
+    {% else %}
+        <li>No tienes productos aún.</li>
+    {% endfor %}
+    </ul>
+    <a href={{path("logout")}}>Cerrar sesion</a>
+{% endblock %}

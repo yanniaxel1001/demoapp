@@ -2,11 +2,27 @@
 
 {% block tittle %} Log in {% endblock %}
 
+{% block stylesheets %}
+    <style>
+    h1{
+        text-align:center;
+    }
+
+    form {
+        width: 200px;
+        margin: 0 auto;
+        background-color: #E6E6E9;
+        padding:30px;
+    }
+    </style>
+{% endblock %}
+
 {% block body %} 
     {% if error %}
         <div>{{error.messageKey|trans(error.messageData, 'security')}}</div>
     {% endif %}
 
+    <h1>Iniciar Sesion</h1>
     <form method="post">
         <div>
             <label for="username">Usuario: </label>
@@ -17,7 +33,7 @@
             <label for="password">Password: </label>
             <input type="password" id="password" name="_password" required>
         </div>
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        
         <div>
             <button type="submit">Iniciar Sesion</button>
         </div>

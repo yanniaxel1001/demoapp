@@ -1,0 +1,12 @@
+{% extends 'base.html.twig'%}
+
+{% block body%}
+<h1>Crear producto</h1>
+<form method="POST">
+    <label>Nombre: <input type="text" name="name" required></label><br>
+    <label>Descripción: <textarea name="description"></textarea></label><br>
+    <label>Precio: <input type="number" name="price" required></label><br>
+    <button type="submit">Guardar</button>
+</form>
+<a href="{{ path('product_index') }}">Volver</a>
+{% endblock %}

@@ -16,14 +16,12 @@ security:
             lazy: true
             provider: app_user_provider
             form_login:
-                login_path: login
-                check_path: login
-                username_parameter: _username
-                password_parameter: _password
-                enable_csrf: true
+                login_path: login # donde se encuentra el formulario
+                check_path: login # ruta que procesa el envio del form
+                default_target_path: product_index
             logout:
-                path: app_logout
-                target: inicio
+                path: logout # ruta que activa el cierre de sesion
+                target: / # lugar al que sera redirigido
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -36,6 +34,7 @@ security:
     access_control:
         - { path: ^/registro, roles: PUBLIC_ACCESS }
         - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/dashboard, roles: ROLE_USER }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/, roles: ROLE_USER }
 
