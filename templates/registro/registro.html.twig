@@ -6,8 +6,8 @@
 {% block body %}
     <div class="container p-5">
         <h1 class="text-center">TiendaFes</h1>
-        <div class="d-flex justify-content-center text-white">
-            <form class="col-md-6 col-lg-4 bg-secondary m-5 p-3" method="post" action="{{ path('registrar') }}">
+        <div class="d-flex justify-content-center">
+            <form class="col-md-6 col-lg-4 bg-body-secondary m-5 p-3" method="post" action="{{ path('registrar') }}">
                 <h1 class="text-center">Registrate</h1>
                 <div class="row">
                     <div class="col-md-6">
@@ -46,7 +46,7 @@
                 </div>
                 <hr>
                 <div class="text-center">
-                    <a class="p-3 text-light text-center" href="{{ path('login')}}">Tengo una cuenta</a>
+                    <a class="p-3 text-center" href="{{ path('login')}}">Tengo una cuenta</a>
                 </div>
             </form>
         </div>

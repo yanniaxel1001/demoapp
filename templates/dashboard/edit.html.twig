@@ -1,27 +1,27 @@
 {% extends 'base.html.twig'%}
 
 {% block body%}
-<h1 class="text-center">Crear Producto</h1>
+<h1 class="text-center">Editar Producto</h1>
 <div class="container p-5">
     <div class="d-flex justify-content-center">
         <form class="col-md-6 col-lg-4 p-4 bg-body-secondary" method="post">
             <div class="">
                 <label for="">Nombre</label>
-                <input class="form-control" name="name" type="text" required>
+                <input class="form-control" name="name" value="{{product.name}}" type="text" required>
             </div>
 
             <div class="">
                 <label for="">Descripcion</label>
-                <textarea class="form-control" name="description"></textarea>
+                <textarea class="form-control" name="description">{{product.description}}</textarea>
             </div>
 
             <div>
                 <label for="">Precio</label>
-                <input class="form-control" name="price" type="number" required>
+                <input class="form-control" name="price" value="{{product.price}}" type="number" required>
             </div>
 
             <div class="text-center p-4">
-                <button type="submit" class="btn btn-primary">Aceptar</button>
+                <button type="submit" class="btn btn-success">Actualizar</button>
             </div>
         </form>
     </div>

@@ -1,18 +1,100 @@
 {% extends 'base.html.twig' %}
 {% block tittle %}Dashboard {% endblock %}
-{% block body %}
 
-    <a href="{{ path('product_create') }}">Crear nuevo producto</a>
-    <ul>
-    {% for product in products %}
-        <li>
-            {#<a href="{{ path('product_edit')}}">Editar</a>#}
-            <strong>{{ product.name }}</strong> - ${{ product.price }}<br>
-            {{ product.description }}<br>
-        </li>
-    {% else %}
-        <li>No tienes productos aún.</li>
-    {% endfor %}
-    </ul>
-    <a href={{path("logout")}}>Cerrar sesion</a>
+{% block javascripts %}
+
+<script>
+$(document).ready(function () {
+    $('#buscador').on('keyup', function () {
+        const query = $(this).val();
+
+        $.ajax({
+            url: "{{ path('product_search') }}",
+            method: 'GET',
+            data: { q: query },
+            success: function (data) {
+                let html = '';
+
+                if (data.length === 0) {
+                    html = '<p>No hay productos existentes</p>';
+                } else {
+                    data.forEach(function (producto) {
+                        html += `
+                            <tr>
+                                <td class="table-secondary">${producto.id}</td>
+                                <td><strong>${producto.name}</strong></td>
+                                <td>${producto.description}</td>
+                                <td>$${producto.price}</td>
+                                <td>
+                                    <a class="btn btn-warning" href="/dashboard/${producto.id}/edit">Editar</a>
+                                    <form method="POST" action="/dashboard/${producto.id}/delete" style="display: inline-block;">
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                }
+
+                $('#resultado-productos').html(html);
+            },
+            error: function () {
+                $('#resultado-productos').html('<p>Error al buscar productos.</p>');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Bienvenido {{last_username}}</h1>
+    <div class="p-5">
+        <a class="btn btn-success" href="{{ path('product_create') }}">Agregar</a>
+        <a class="btn btn-outline-danger" href={{path("logout")}}>Cerrar sesion</a>
+        <div class="row p-3">
+            <div class="col-5">
+                <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre..." autocomplete="off">
+            </div>
+        </div>
+        <hr>
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="table-dark">ID</th>
+                    <th class="table-dark">Nombre</th>
+                    <th class="table-dark">Descripcion</th>
+                    <th class="table-dark">Precio</th>
+                    <th class="table-dark">Accion</th>
+                </tr>
+            </thead>
+            <tbody id="resultado-productos">
+            {% for product in products %}
+                <tr>
+                    <td class="table-secondary">
+                        {{product.id}}
+                    </td>
+                    <td>
+                        <strong>{{ product.name }}</strong>
+                    </td>
+                    <td>
+                        {{ product.description }}
+                    </td>
+                    <td>
+                        ${{ product.price }}
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" href="{{path('product_edit', {'id':product.id})}}">Editar</a>
+                        <form method="POST" action="{{ path('product_delete', {'id': product.id}) }}" style="display: inline-block;">
+                            <button class="btn btn-danger"type="submit">Eliminar</button>
+                        </form>
+                    </td>   
+                </tr>             
+            {% else %}
+                <p>No tienes productos aún.</p>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
 {% endblock %}
