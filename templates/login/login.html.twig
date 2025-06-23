@@ -2,40 +2,48 @@
 
 {% block tittle %} Log in {% endblock %}
 
-{% block stylesheets %}
-    <style>
-    h1{
-        text-align:center;
-    }
-
-    form {
-        width: 200px;
-        margin: 0 auto;
-        background-color: #E6E6E9;
-        padding:30px;
-    }
-    </style>
-{% endblock %}
-
 {% block body %} 
     {% if error %}
         <div>{{error.messageKey|trans(error.messageData, 'security')}}</div>
     {% endif %}
 
-    <h1>Iniciar Sesion</h1>
-    <form method="post">
-        <div>
-            <label for="username">Usuario: </label>
-            <input type="text" id="username" name="_username" value="{{last_username}}" required>
+    <div class="container p-5">
+        <h1 class="text-center">TiendaFes</h1>
+        <div class="d-flex justify-content-center text-white">
+            <form class="col-md-6 col-lg-4 p-4 bg-secondary" method="post">
+                <h1 class="text-center">Inicia Sesion</h1>
+                <div>
+                    <label for="username">Usuario: </label>
+                    <input class="form-control" type="text" id="username" name="_username" value="{{last_username}}" required>
+                </div>
+                    
+                <div>
+                    <label for="password">Password: </label>
+                    <input class="form-control" type="password" id="password" name="_password" required>
+                </div>
+                
+                <div class="text-center p-3">
+                    <button class="btn btn-primary" type="submit">Iniciar Sesion</button>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <a class="p-3 text-light text-center" href="{{ path('registrar')}}">Crear una cuenta</a>
+                </div>
+            </form>
         </div>
-            
-        <div>
-            <label for="password">Password: </label>
-            <input type="password" id="password" name="_password" required>
+    </div>
+    <footer class="bg-black text-white p-3">
+        <div class="row">
+            <div class="col-2">
+                <Address>TiendaFes</Address>
+                <p>Yanni Axel</p>
+            </div>
+            <div class="col-10">
+                <a class="text-white" href="">Home</a><br>
+                <a class="text-white" href="">About</a><br>
+                <a class="text-white" href="">Contact</a><br>
+                <a class="text-white" href="">FAQ</a><br>
+            </div>
         </div>
-        
-        <div>
-            <button type="submit">Iniciar Sesion</button>
-        </div>
-    </form>
+    </footer>
 {% endblock %}

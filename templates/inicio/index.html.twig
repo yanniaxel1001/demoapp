@@ -3,9 +3,99 @@
 {% block title %} TiendaFES{% endblock %}
 
 {% block body %}
-<h1>Bienvenido</h1>
-<div>
-    <a href="{{ path('registrar')}}">Registrar</a>
-    <a href="{{ path('login')}}">Iniciar sesion</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-info p-3">
+    <a class="navbar-brand" href="">
+        <img src="{{asset('img/icono.png')}}" width="64" height="64" alt="">
+        TiendaFes
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
+            <a class="nav-item nav-link" href="">Acerca de</a>
+            <a class="nav-item nav-link" href="">Ayuda</a>
+            <a class="nav-item nav-link" href="{{ path('registrar')}}">Registrar</a>
+            <a class="nav-item nav-link" href="{{ path('login')}}">Iniciar sesion</a>
+        </div>
+    </div>
+</nav>
+<div class="position-relative">
+  <img src="{{asset('img/fondo_inicio2.jpg')}}" class="img-fluid w-100" alt="Imagen de fondo">
+  <div class="position-absolute top-0 start-0 p-4 text-white">
+    <!-- Contenido sobre la imagen -->
+    <div class="row">
+        <div class="col-7">
+            <h1 class="display-4 fw-bold">Título generico para inicio</h1>
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing
+             elit. Tempora pariatur aperiam error praesentium, asperiores expedita
+              ad, sint ullam enim voluptatum iste animi consectetur ratione 
+              quibusdam illum dignissimos repellendus. Quia, dolorem!</p>
+            <ul class="list-unstyled">
+            <li>Elemento de lista 1</li>
+            <li>Elemento de lista 2</li>
+            <li>Elemento de lista 2</li>
+            <li>Elemento de lista 2</li>
+            </ul>
+            <button class="btn btn-primary btn-lg">Botón</button>
+        </div>
+        <div class="col-5">
+            <img class="rounded mx-auto d-block" src="{{asset('img/images.png')}}" alt="">
+        </div>
+    </div>
+  </div>
 </div>
+<!-- card container -->
+<div class="container p-5">
+    <div class="row">
+        <div class="col-4">
+            <div class="card bg-dark text-white">
+                <img class="card-img-top p-5" src="{{asset('img/icono_card1.png')}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-tittle text-center">Lorem</h5>
+                    <p class="card-text text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam at, quidem 
+                    voluptates aut aliquam deserunt explicabo esse, exercitationem sed inventore
+                    impedit dolore nam et hic expedita velit provident soluta est.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card bg-dark text-white">
+                <img class="card-img-top p-5" src="{{asset('img/icono_card2.png')}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-tittle text-center">Lorem</h5>
+                    <p class="card-text text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam at, quidem 
+                    voluptates aut aliquam deserunt explicabo esse, exercitationem sed inventore
+                    impedit dolore nam et hic expedita velit provident soluta est.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card bg-dark text-white">
+                <img class="card-img-top p-5" src="{{asset('img/icono_card3.png')}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-tittle text-center">Lorem</h5>
+                    <p class="card-text text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam at, quidem 
+                    voluptates aut aliquam deserunt explicabo esse, exercitationem sed inventore
+                    impedit dolore nam et hic expedita velit provident soluta est.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="bg-black text-white p-3">
+    <div class="row">
+        <div class="col-2">
+            <Address>TiendaFes</Address>
+            <p>Yanni Axel</p>
+        </div>
+        <div class="col-10">
+            <a class="text-white" href="">Home</a><br>
+            <a class="text-white" href="">About</a><br>
+            <a class="text-white" href="">Contact</a><br>
+            <a class="text-white" href="">FAQ</a><br>
+        </div>
+    </div>
+</footer>
 {% endblock %}
