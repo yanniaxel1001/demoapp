@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+}
+
+header,
+section{
+    overflow-x: hidden;
+
+}
+
+header .row .col-md-5{
+    padding:4.2vmin 4vmin;
+}
+
+header .row .col-md-7{
+    padding: 22vmin 1vmin;
+    padding-bottom: 35vmin;
+}
+
+header .row .col-md-5 img{
+    width: 90%;
+}
+
+.section-1{
+    padding: 20vmin 0;
+}
+
+.section-1 .row .col-md-6 .pray img{
+    opacity: 0.8;
+    width: 80%;
+    border-radius: 0.2em;
+}
+
+
+.section-1 .row .col-md-6:last-child{
+    position: relative;
+}
+
+.section-1 .row .col-md-6 .panel{
+    position:absolute;
+    top:7vmin;
+    left: -18vmin;
+    background:white;
+    border-radius: 3px;
+    text-align:left;
+    padding: 5vmin 5vmin 5vmin 10vmin;
+    box-shadow:0px 25px 42px rgba(0,0,0,0.2);
+
+}
+
+.cover{
+    width:100%;
+    height: 100vmin;
+    background: url('../img/fondo_inicio2.jpg');
+    background-position: -24rem -19rem;
+    background-size: 150%;
+    position:relative;
+}
+
+.cover .content{
+    background:rgba(0,0,0,0.7);
+    height: 100%;
+    width: 100%;
+    padding-top: 40vmin;
+}
+
+.cover .content > h1{
+    font-size: 6vmin;
+    color: whitesmoke;
+}
+
+.cover .content > p{
+    font-size: 2vmin;
+    color: #e5e5e5;
+}
+
+footer{
+    overflow-x: hidden;
+    padding: 20vmin 18vmin;
+}
+
+footer p > span{
+    color:#ff512f;
+
+}
+
+footer input{
+    border:none !important
+    
+}
+
+
+footer .column i {
+    color:#ff512f;
+}
+
+footer .column i + i{
+    padding: 0 0.5em;
+}
